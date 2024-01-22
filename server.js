@@ -36,9 +36,9 @@ app.get("/", function (req, res) {
 })
 app.post("/", function (req, res) {
     if(req.body.dlNo != null){
-        res.sendFile(path.join(__dirname, "public/data.json"));
-    }else{
         res.sendFile(path.join(__dirname, "public/data2.json"));
+    }else{
+        res.sendFile(path.join(__dirname, "public/data.json"));
 
     }
     
