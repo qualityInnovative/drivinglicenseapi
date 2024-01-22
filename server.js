@@ -31,10 +31,17 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, "public/")));
 app.get("/", function (req, res) {
+   
     res.sendFile(path.join(__dirname, "public/data.json"));
 })
 app.post("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "public/data.json"));
+    if(req.body.dlNo != null){
+        res.sendFile(path.join(__dirname, "public/data.json"));
+    }else{
+        res.sendFile(path.join(__dirname, "public/data2.json"));
+
+    }
+    
 })
 server.listen(process.env.API_PORT || 5010, function () {
     console.log("Running on port: " + process.env.API_PORT);
