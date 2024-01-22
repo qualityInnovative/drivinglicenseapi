@@ -21,6 +21,18 @@ app.use(function (req, res, next) {
         "Access-Control-Allow-Headers",
         "X-Requested-With,content-type, Authorization"
     );
+
+    // Additional security headers
+    res.setHeader("X-Frame-Options", "DENY");
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("X-XSS-Protection", "1; mode=block");
+    res.setHeader(
+        "Content-Security-Policy",
+        "default-src 'self'; script-src 'self'; object-src 'none';"
+    );
+    res.setHeader("Permissions-Policy", "geolocation=()");
+    res.setHeader("Referrer-Policy", "no-referrer");
+
     next();
 });
 const corsOptions = {
